@@ -1,27 +1,31 @@
 package com.crowdar.examples.steps;
 
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.actions.MobileActionManager;
-import com.crowdar.examples.constants.LoginConstants;
 import com.crowdar.examples.services.LoginService;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.cucumber.java.en.Then;
 
-/**
- * This class handles the steps in the features files and connects with the service in case of having business logic.
- * Otherwise, if it is a simple action, like clicking a button and it has nothing related to business logic, is correct to put here.
- */
 public class LoginClockifySteps extends PageSteps {
 
-    @Given("The app is loaded correctly")
-    @Then("Login page is displayed")
-    public void isLoginPageVisible() {
+    @Given("el usuario ingreso a la app correctamente")
+    public void el_usuario_ingreso_a_la_app_correctamente() {
         LoginService.isViewLoaded();
     }
-    @When("The user logs in the application with: (.*), (.*)")
-    public void logIn(String email, String password) {
+
+    @When("el usuario ingresa su (.*), (.*)")
+    public void el_usuario_ingresa_su_email_password(String email, String password) {
         LoginService.logIn(email, password);
+    }
+
+    @Then("el usuario se a logeado correctamente con su (.*)")
+    public void el_usuario_se_ha_logeado_correctamente_con_su(String email) {
+        LoginService.validarEmail(email);
+    }
+
+    @Then("obtengo el pass")
+    public void obtengo_el_pass(){
+        LoginService.obtengoElPass();
     }
 
 

@@ -1,11 +1,14 @@
+Feature: Como usuario deseo poder agregar tiempos en mis proyectos
 
-Feature: jhkhjik
   @Clockify
-  Scenario Outline: login
-    Given The app is loaded correctly
-    When The user logs in the application with: <email>, <password>
-    #Then Home page is displayed
+  Scenario Outline: Agregar tiempo en un proyecto
+    Given el usuario ingreso a la app correctamente
+    When el usuario ingresa su <email>, <password>
+    And el usuario setea una hora <hora> <minutos>
+    And el ususario agrega al proyecto <project> y descripcion <texto>
+    And el usuario guarda el time entry
+    Then el usuario verifica su proyecto <texto> guardado
 
     Examples:
-      | email             | password  |
-      | xnahuex@gmail.com | Asdasd123 |
+      | email             | password  | texto   | project | hora | minutos |
+      | xnahuex@gmail.com | Asdasd123 | crowdar | Mobile  | 14   | 15      |
